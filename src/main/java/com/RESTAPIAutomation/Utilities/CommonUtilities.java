@@ -20,6 +20,13 @@ import io.restassured.specification.ResponseSpecification;
 public class CommonUtilities {
 	
 	
+	
+	public CommonUtilities()
+	{
+		
+	}
+	
+	
 	 static String ConfigPropertiesFilePath=System.getProperty("user.dir")+"//RESTAPIAutomation//src//resources//com//RESTAPIAutomation//Data//Config.properties";
 	 CommonUtilities commonUtilities= new CommonUtilities();
 	 public static RequestSpecification requestspacification;
