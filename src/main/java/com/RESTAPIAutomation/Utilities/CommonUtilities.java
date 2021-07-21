@@ -21,20 +21,16 @@ public class CommonUtilities {
 	
 	
 	
-	public CommonUtilities()
-	{
-		
-	}
 	
 	
-	 static String ConfigPropertiesFilePath=System.getProperty("user.dir")+"//RESTAPIAutomation//src//resources//com//RESTAPIAutomation//Data//Config.properties";
-	 CommonUtilities commonUtilities= new CommonUtilities();
+	 static String ConfigPropertiesFilePath=System.getProperty("user.dir")+"//src//resources//com//RESTAPIAutomation//Data//Config.properties";
+	
 	 public static RequestSpecification requestspacification;
-	 ResponseSpecification  responsespecification;
+	 static ResponseSpecification  responsespecification;
 	
 	
 	
-	public  String  getPropertiesFromConfig(String Key) throws IOException
+	public static  String  getPropertiesFromConfig(String Key) throws IOException
 	{
 		
 		Properties prob=new Properties();
@@ -45,13 +41,13 @@ public class CommonUtilities {
 	}   
 	
 	
-	public RequestSpecification createRequestSpecification() throws Exception
+	public static RequestSpecification createRequestSpecification() throws Exception
 	{
 		
 		if(requestspacification==null)
 		{
 		PrintStream printstream=new PrintStream(new FileOutputStream("Logging.txt"));
-	 requestspacification= new RequestSpecBuilder().setBaseUri(commonUtilities.getPropertiesFromConfig("BaseUrl"))
+	 requestspacification= new RequestSpecBuilder().setBaseUri("https://fakerestapi.azurewebsites.net")
 			                                           .addFilter(RequestLoggingFilter.logRequestTo(printstream))
 			                                           .addFilter(ResponseLoggingFilter.logResponseTo(printstream))
                                                        .setContentType(ContentType.TEXT)
@@ -67,7 +63,7 @@ public class CommonUtilities {
 	
 	
 	
-	public ResponseSpecification createResponseSpecification() throws Exception
+	public static ResponseSpecification createResponseSpecification() throws Exception
 	{
 		return responsespecification = new ResponseSpecBuilder().expectContentType(ContentType.JSON).build();
 		
@@ -76,7 +72,7 @@ public class CommonUtilities {
 	
 	
 	
-	public String  getValueFromResponseJsonPath(Response response,String Key)
+	public  static String  getValueFromResponseJsonPath(Response response,String Key)
 	{
 		
 		JsonPath jsonpath=new JsonPath(response.asString());

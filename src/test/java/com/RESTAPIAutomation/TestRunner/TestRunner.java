@@ -8,12 +8,15 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features="src//main//java//com//RESTAPIAutomation//Features",
-                 glue= "stepDefinition",
+                 glue= {"com/RESTAPIAutomation/stepDefinition"},
+                 
+                 plugin="json:target/jsonReports/cucumber-reporting.json"
                 
-                 plugin="json:target/jsonReports/cucumber-report.json"
+                 
                  )
-public class TestRunner {
+public class TestRunner{
 
+	  
+	
 }
 
-//C:/User s/Lenovo/eclipse-workspace/RESTAPIAutomation/src/main/java/com/RESTAPIAutomation/stepDefinition
